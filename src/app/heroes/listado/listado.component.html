@@ -1,0 +1,24 @@
+<p>Listado de Héroes</p>
+
+<div *ngIf="heroeBorrado != ''; else noBorrado">  <!-- Sirve como condicional. Si *ngIf=false la etiqueta no aperece. si *ngIf=true si.
+                                    En este caso si heroeBorrado != '' quiere decir que no esta vacio el string, por consiguiente, si hay un heroe borrado (true).
+                                    Tambien es posible hacer un else. Este else esta asociado a la etiqueta ng-template con #noBorrado, de manera que, si la condición no se comple
+                                    muestra el <h3> de dentro. Decir que el else no es obligatorio. -->
+    <h3>Héroe borrado: <small>{{ heroeBorrado }}</small></h3> 
+</div>
+
+<ng-template #noBorrado> <!-- Etiqueta propia de angular que se presenta como clausulas else de *ngIf. Muestra contenido según la lógica que apliquemos-->
+    <h3>No ha borrado nada</h3>
+</ng-template>
+
+<button (click) = "borrarHeroe()">
+    borrar
+</button>
+
+<ul>
+    <li *ngFor="let heroe of heroes; let i = index"> <!-- *ngFor sirve para hacer un bucle. Con el recorremos el vector heroes-->
+       {{ i + 1 }} {{ heroe }} 
+    </li>
+
+</ul>
+
